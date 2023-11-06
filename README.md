@@ -22,9 +22,10 @@ Fiyatlar misafir bilgileri, kalınacak gece sayısı ve pansiyon tipine göre ot
 Veritabanı kullanılmalıdır.
 GUI (Arayüz) tasarlanmalıdır. Java Swing veya JavaFX gibi araçlar kullanılabilir.
 
-### Proje anlatımının yer aldığı video linki: https://www.loom.com/share/f4529a8599a34efe845afe2721f3c409?sid=24368c6e-f20c-465a-97fc-6fb3d51ab43c
+### Proje anlatımının yer aldığı video linki: 
+https://www.loom.com/share/f4529a8599a34efe845afe2721f3c409?sid=24368c6e-f20c-465a-97fc-6fb3d51ab43c
 
-=======================================================================================
+========================================================================
 
 # Tourism Agent System
 ## About the Project
@@ -50,4 +51,5 @@ Prices are automatically calculated based on guest information, the number of ni
 A database must be used.
 A GUI (User Interface) should be designed. Tools like Java Swing or JavaFX can be used.
 
-### Video link for project presentation: https://www.loom.com/share/f4529a8599a34efe845afe2721f3c409?sid=24368c6e-f20c-465a-97fc-6fb3d51ab43c
+### Video link for project presentation: 
+https://www.loom.com/share/f4529a8599a34efe845afe2721f3c409?sid=24368c6e-f20c-465a-97fc-6fb3d51ab43c
