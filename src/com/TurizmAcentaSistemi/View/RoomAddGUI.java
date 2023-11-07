@@ -148,11 +148,10 @@ public class RoomAddGUI extends JFrame {
                 }
             }
         });
-//oda ekle butonu kodları bitişi
 
     }
 
-    //Hotel isimlerini combo box a aktaran metod
+    // Otel isimlerini combo box a aktarır.
     public void loadHotelNameCombo() {
         cmb_room_hotelname.removeAllItems();
         cmb_room_hotelname.addItem(new Item(0, null));
@@ -161,7 +160,7 @@ public class RoomAddGUI extends JFrame {
         }
     }
 
-    //oda ekleme sayfasında seçilen otele göre pansiyon türlerini combo box a aktaran metod
+    // Seçilen otele göre pansiyon türlerini combo box a aktarır.
     private void loadHotelTypeCombo() {
         Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
         cmb_room_hotel_type.removeAllItems();
@@ -172,7 +171,7 @@ public class RoomAddGUI extends JFrame {
         }
     }
 
-    //oda ekleme sayfasında seçilen otele göre sezon türlerini combo box a aktaran metod
+    // Seçilen otele göre sezon türlerini combo box a aktarır.
     private void loadSeasonCombo() {
         Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
         cmb_season.removeAllItems();

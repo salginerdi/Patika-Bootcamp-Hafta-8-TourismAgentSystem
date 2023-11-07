@@ -329,7 +329,7 @@ public class AdminGUI extends JFrame {
 
         btn_room_reservation.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_room_id) || Helper.isFieldEmpty(fld_chec_in) || Helper.isFieldEmpty(fld_check_out) || Helper.isFieldEmpty(fld_adult_numb) || Helper.isFieldEmpty(fld_child_numb)){
-                Helper.showMsg("Rezervasyon yapılacak odayı seçiniz! Giriş-Çıkış tarihlerini ve misafir sayılarını doldurunuz.");
+                Helper.showMsg("Rezervasyon yapılacak odayı seçiniz! Giriş-Çıkış tarihlerini ve misafir sayılarını doldurunuz!");
             }
             else {
                 Room room = Room.getFetch(reservation_room_id);
@@ -478,7 +478,7 @@ public class AdminGUI extends JFrame {
         clearModel.setRowCount(0);
         int i;
         if (list == null){
-            Helper.showMsg("Aradığınız kriterlere uygun oda bulunamadı");
+            Helper.showMsg("Aradığınız kriterlere uygun oda bulunamadı!");
         }
         else{
             for (Room obj : list){

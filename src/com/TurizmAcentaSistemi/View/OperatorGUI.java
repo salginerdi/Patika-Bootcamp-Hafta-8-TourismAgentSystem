@@ -63,7 +63,6 @@ public class OperatorGUI extends JFrame {
         tbl_user_list.getTableHeader().setReorderingAllowed(false);
         tbl_user_list.getColumnModel().getColumn(0).setMaxWidth(75);
 
-//kullanıcı tablosunda tıklanılan satırın id sini silme formuna aktaran kod
         tbl_user_list.getSelectionModel().addListSelectionListener(e -> {
             try{
                 String select_user_id = tbl_user_list.getValueAt(tbl_user_list.getSelectedRow(),0).toString();
@@ -127,7 +126,7 @@ public class OperatorGUI extends JFrame {
             ArrayList<User> searchingUser = User.searchUserList(query);
             loadUserModel(searchingUser);
         });
-//Kullanıcı sekmesi kodları bitişi
+
     }
 
     private void loadUserModel() {
@@ -145,7 +144,7 @@ public class OperatorGUI extends JFrame {
         }
     }
 
-    //filtrelenen kullanıcıları listelemek için yazıldı
+
     public void loadUserModel(ArrayList<User> list){
         DefaultTableModel clearModel = (DefaultTableModel) tbl_user_list.getModel();
         clearModel.setRowCount(0);
