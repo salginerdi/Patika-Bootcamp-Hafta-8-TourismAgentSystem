@@ -72,7 +72,6 @@ public class Helper {
         return area.getText().trim().isEmpty();
     }
 
-    // user search için dinamik query oluşturma
     public static String searchQuery (String name, String uname, String type) {
         String query = "SELECT * FROM user WHERE name LIKE '%{{name}}%' AND uname LIKE '%{{uname}}%' AND type LIKE '%{{type}}%'";
         query = query.replace("{{name}}", name);
@@ -82,7 +81,6 @@ public class Helper {
         return query;
     }
 
-    //silme işlemlerinde emin misin ekranına ait metod
     public static boolean confirm(String str) {
         optionPaneTR();
         String msg;
@@ -96,7 +94,7 @@ public class Helper {
         return JOptionPane.showConfirmDialog(null,msg,"Son Kararınız mı?",JOptionPane.YES_NO_OPTION) ==0;
     }
 
-    //Jradio lara Konaklama tipi metinleri için, hotel ekleme ekranındaki için
+
     public static String hotelType(String number){
         String type="";
         switch (number){
@@ -125,7 +123,6 @@ public class Helper {
         return type;
     }
 
-    //Jradio lara oda özellikleri metinleri için, oda ekleme ekranındaki
     public static String roomProperty(String number){
         String property="";
         switch (number){

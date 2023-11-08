@@ -33,10 +33,10 @@ public class RoomAddGUI extends JFrame {
     private String select_room_type;
     private int addedRoom_id;
 
-    private final Admin admin;
+    private final Employee employee;
 
-    public RoomAddGUI(Admin admin) {
-        this.admin = admin;
+    public RoomAddGUI(Employee employee) {
+        this.employee = employee;
         add(wrapper);
         setSize(800, 400);
         setLocation(Helper.screenCenterPoint("x", getSize()), Helper.screenCenterPoint("y", getSize()));
@@ -86,7 +86,7 @@ public class RoomAddGUI extends JFrame {
                 int hotel_type_id = hotelTypeItem.getKey();
                 Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
                 int hotel_id = hotelItem.getKey();
-                for (HotelSeason obj : HotelSeason.getListByHotelID(hotel_id)) { //season ıd yi çekmek için yazıldı
+                for (HotelSeason obj : HotelSeason.getListByHotelID(hotel_id)) {
                     String season = (obj.getSeason_start().toString() + "  -  " + obj.getSeason_end().toString());
                     if (season.equals(cmb_season.getSelectedItem().toString())) {
                         season_id = obj.getId();
@@ -99,7 +99,7 @@ public class RoomAddGUI extends JFrame {
                     Room addedRoom = roomList.get(Room.getList().size() - 1);
                     addedRoom_id = addedRoom.getId();
                     String room_properties = "";
-                    for (int i = 1; i <= 7; i++) {  //room property ekleme
+                    for (int i = 1; i <= 7; i++) {
                         switch (i) {
                             case 1:
                                 if (radioButton1.isSelected()) {
@@ -151,7 +151,6 @@ public class RoomAddGUI extends JFrame {
 
     }
 
-    // Otel isimlerini combo box a aktarır.
     public void loadHotelNameCombo() {
         cmb_room_hotelname.removeAllItems();
         cmb_room_hotelname.addItem(new Item(0, null));
@@ -160,7 +159,6 @@ public class RoomAddGUI extends JFrame {
         }
     }
 
-    // Seçilen otele göre pansiyon türlerini combo box a aktarır.
     private void loadHotelTypeCombo() {
         Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
         cmb_room_hotel_type.removeAllItems();
@@ -171,7 +169,6 @@ public class RoomAddGUI extends JFrame {
         }
     }
 
-    // Seçilen otele göre sezon türlerini combo box a aktarır.
     private void loadSeasonCombo() {
         Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
         cmb_season.removeAllItems();

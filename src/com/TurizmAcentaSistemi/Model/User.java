@@ -105,11 +105,11 @@ public class User {
             ResultSet rs = pr.executeQuery();
             if (rs.next()){
                 switch (rs.getString("type")){
-                    case "operator":
-                        obj = new Operator();
-                        break;
                     case "admin":
                         obj = new Admin();
+                        break;
+                    case "employee":
+                        obj = new Employee();
                         break;
                     default:
                         obj = new User();

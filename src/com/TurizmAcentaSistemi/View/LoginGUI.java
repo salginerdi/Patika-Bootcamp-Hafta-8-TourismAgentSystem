@@ -2,8 +2,8 @@ package com.TurizmAcentaSistemi.View;
 
 import com.TurizmAcentaSistemi.Helper.Config;
 import com.TurizmAcentaSistemi.Helper.Helper;
+import com.TurizmAcentaSistemi.Model.Employee;
 import com.TurizmAcentaSistemi.Model.Admin;
-import com.TurizmAcentaSistemi.Model.Operator;
 import com.TurizmAcentaSistemi.Model.User;
 
 import javax.swing.*;
@@ -39,11 +39,11 @@ public class LoginGUI extends JFrame {
                 }
                 else{
                     switch (u.getType()){
-                        case "operator":
-                            OperatorGUI opGUI = new OperatorGUI((Operator) u);
-                            break;
                         case "admin":
-                            AdminGUI adGUI = new AdminGUI((Admin) u);
+                            AdminGUI adminGUI = new AdminGUI((Admin) u);
+                            break;
+                        case "employee":
+                            EmployeeGUI employeeGUIGUI = new EmployeeGUI((Employee) u);
                             break;
                     }
                     dispose();

@@ -2,7 +2,7 @@ package com.TurizmAcentaSistemi.View;
 
 import com.TurizmAcentaSistemi.Helper.Config;
 import com.TurizmAcentaSistemi.Helper.Helper;
-import com.TurizmAcentaSistemi.Model.Admin;
+import com.TurizmAcentaSistemi.Model.Employee;
 import com.TurizmAcentaSistemi.Model.Hotel;
 import com.TurizmAcentaSistemi.Model.HotelSeason;
 import com.TurizmAcentaSistemi.Model.HotelType;
@@ -36,10 +36,10 @@ public class HotelAddGUI extends JFrame {
     private String select_star;
     private int added_hotel_id;
 
-    private final Admin admin;
+    private final Employee employee;
 
-    public HotelAddGUI(Admin admin){
-        this.admin = admin;
+    public HotelAddGUI(Employee employee){
+        this.employee = employee;
         add(wrapper);
         setSize(800,500);
         setLocation(Helper.screenCenterPoint("x",getSize()), Helper.screenCenterPoint("y",getSize()));
