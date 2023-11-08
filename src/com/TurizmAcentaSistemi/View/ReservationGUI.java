@@ -27,13 +27,13 @@ public class ReservationGUI extends JFrame {
     private JTextField fld_child_numb;
     private JTextField fld_check_in_date;
     private JTextField fld_check_out_date;
-    private JTextField fld_total_price2;
     private JTextField fld_total_price;
     private JTextField fld_client_name;
     private JTextField fld_client_phone;
     private JTextField fld_client_mail;
     private JTextArea txtArea_client_note;
     private JButton btn_add_reservation;
+    private JTextField fld_total_price2;
 
     private final Room room;
     private int adult_numb = 0;
@@ -72,7 +72,6 @@ public class ReservationGUI extends JFrame {
 
         // 15 - Misafir bilgisi, kalınacak gece sayısı ve pansiyon tipine göre konaklamaya ait fiyatların hesaplandığı bölüm.
         // 15 - The section where the prices of the accommodation are calculated according to the guest information, the number of nights to stay and the type of hostel.
-
         total_price2 = 2* (   (room.getAdult_price() * adult_numb) + (room.getChild_price() * child_numb)  );
         fld_total_price2.setText(total_price2 + " TL");
 
