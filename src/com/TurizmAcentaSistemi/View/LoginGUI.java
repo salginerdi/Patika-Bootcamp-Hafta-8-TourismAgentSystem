@@ -13,10 +13,11 @@ public class LoginGUI extends JFrame {
     private JTextField fld_user_uname;
     private JTextField fld_user_pass;
     private JButton btn_login;
+    private JLabel pnl_logo;
 
     public LoginGUI(){
         add(wrapper);
-        setSize(400,400);
+        setSize(400,500);
         setLocation(Helper.screenCenterPoint("x", getSize()), Helper.screenCenterPoint("y", getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle(Config.PROJECT_TITLE);
