@@ -36,7 +36,7 @@ public class EmployeeGUI extends JFrame {
     private JButton btn_room_add;
     private JPanel room_sh_form;
     private JTextField fld_region_hotelName;
-    private JTextField fld_chec_in;
+    private JTextField fld_check_in;
     private JTextField fld_check_out;
     private JTextField fld_adult_numb;
     private JTextField fld_child_numb;
@@ -247,7 +247,7 @@ public class EmployeeGUI extends JFrame {
             String regionHotelName = fld_region_hotelName.getText();
 
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            check_in = fld_chec_in.getText().trim();
+            check_in = fld_check_in.getText().trim();
             check_out = fld_check_out.getText().trim();
             Date check_in_date = null;
             Date check_out_date = null;
@@ -276,10 +276,10 @@ public class EmployeeGUI extends JFrame {
 
             ArrayList<Room> searchingRoom = new ArrayList<>();
 
-            if (Helper.isFieldEmpty(fld_chec_in) && Helper.isFieldEmpty(fld_check_out) && Helper.isFieldEmpty(fld_region_hotelName)){
+            if (Helper.isFieldEmpty(fld_check_in) && Helper.isFieldEmpty(fld_check_out) && Helper.isFieldEmpty(fld_region_hotelName)){
                 loadRoomListModel();
             }
-            else if (Helper.isFieldEmpty(fld_chec_in) && Helper.isFieldEmpty(fld_check_out)){
+            else if (Helper.isFieldEmpty(fld_check_in) && Helper.isFieldEmpty(fld_check_out)){
                 for (Hotel hotel : searchingHotel){
                     Room obj = Room.getFetchByHotelID(hotel.getId());
                     searchingRoom.add(obj);
@@ -327,21 +327,21 @@ public class EmployeeGUI extends JFrame {
         });
 
         btn_room_reservation.addActionListener(e -> {
-            if (Helper.isFieldEmpty(fld_room_id) || Helper.isFieldEmpty(fld_chec_in) || Helper.isFieldEmpty(fld_check_out) || Helper.isFieldEmpty(fld_adult_numb) || Helper.isFieldEmpty(fld_child_numb)){
+            if (Helper.isFieldEmpty(fld_room_id) || Helper.isFieldEmpty(fld_check_in) || Helper.isFieldEmpty(fld_check_out) || Helper.isFieldEmpty(fld_adult_numb) || Helper.isFieldEmpty(fld_child_numb)){
                 Helper.showMsg("Rezervasyon yapılacak odayı seçiniz! Giriş-Çıkış tarihlerini ve misafir sayılarını doldurunuz!");
             }
             else {
                 Room room = Room.getFetch(reservation_room_id);
                 adult_numb = Integer.parseInt(fld_adult_numb.getText());
                 child_numb = Integer.parseInt(fld_child_numb.getText());
-                check_in = fld_chec_in.getText().trim();
+                check_in = fld_check_in.getText().trim();
                 check_out = fld_check_out.getText().trim();
 
                 ReservationGUI resGUI = new ReservationGUI(room, adult_numb, child_numb, check_in, check_out);
                 resGUI.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosed(WindowEvent e) {
-                        fld_chec_in.setText(null);
+                        fld_check_in.setText(null);
                         fld_check_out.setText(null);
                         fld_adult_numb.setText(null);
                         fld_child_numb.setText(null);
