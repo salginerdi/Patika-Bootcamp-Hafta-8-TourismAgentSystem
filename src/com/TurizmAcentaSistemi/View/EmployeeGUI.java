@@ -4,6 +4,8 @@ import com.TurizmAcentaSistemi.Helper.Config;
 import com.TurizmAcentaSistemi.Helper.Helper;
 import com.TurizmAcentaSistemi.Model.*;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
@@ -49,10 +51,11 @@ public class EmployeeGUI extends JFrame {
     private JScrollBar scrollBar2;
     private JScrollBar scrollBar3;
     private JTextField fld_hotel_id;
-    private JButton btn_hotel_delete;
     private JScrollBar scrl_room_list;
     private JScrollBar scrollBar5;
     private JScrollBar scrl_reservation_list;
+    private JTextField fld_res_id;
+    private JButton btn_res_delete;
 
     DefaultTableModel mdl_hotel_list;
     private Object[] row_hotel_list;
@@ -328,7 +331,7 @@ public class EmployeeGUI extends JFrame {
 
         btn_room_reservation.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_room_id) || Helper.isFieldEmpty(fld_check_in) || Helper.isFieldEmpty(fld_check_out) || Helper.isFieldEmpty(fld_adult_numb) || Helper.isFieldEmpty(fld_child_numb)){
-                Helper.showMsg("Rezervasyon yapılacak odayı seçiniz! Giriş-Çıkış tarihlerini ve misafir sayılarını doldurunuz!");
+                Helper.showMsg("Rezervasyon yapılacak odayı seçiniz! Giriş-Çıkış tarihlerini ve misafir sayıları kısmını doldurunuz!");
             }
             else {
                 Room room = Room.getFetch(reservation_room_id);
@@ -371,6 +374,15 @@ public class EmployeeGUI extends JFrame {
         tbl_reservation_list.getTableHeader().setReorderingAllowed(false);
         tbl_reservation_list.getColumnModel().getColumn(0).setMaxWidth(75);
 
+        tbl_reservation_list.getSelectionModel().addListSelectionListener(e -> {
+            try{
+                String selected_res_id = tbl_reservation_list.getValueAt(tbl_reservation_list.getSelectedRow(), 0).toString();
+                fld_res_id.setText(selected_res_id);
+            }catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        });
+
 
         /*btn_hotel_delete.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_hotel_id)) {
@@ -386,6 +398,22 @@ public class EmployeeGUI extends JFrame {
 
             }
         });*/
+
+        // Rezervasyon silme butonu işlevi
+        // Reservation delete button function
+        btn_res_delete.addActionListener(e -> {
+           if(Helper.isFieldEmpty(fld_res_id)){
+               Helper.showMsg("fill");
+           }else{
+               int res_id = Integer.parseInt(fld_res_id.getText());
+               if(ResInfo.deleteRes(res_id)){
+                   Helper.showMsg("done");
+                   loadReservationModel();
+               }else{
+                   Helper.showMsg("error");
+               }
+           }
+        });
     }
 
     // 18 - Acente çalışanlarının sistem üzerinden yapılan rezervasyonları listelediği bölüm.

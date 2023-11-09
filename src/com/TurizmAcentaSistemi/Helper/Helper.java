@@ -42,15 +42,15 @@ public class Helper {
         switch (str){
             case "fill":
                 msg = "Lütfen tüm alanları doldurunuz!";
-                title = "Hata";
+                title = "Error";
                 break;
             case "done":
                 msg = "İşlem başarılı!";
-                title = "Sonuç";
+                title = "Result";
                 break;
             case "error":
                 msg = "Bir hata oluştu!";
-                title = "Hata";
+                title = "Error";
 
             default:
                 msg = str;

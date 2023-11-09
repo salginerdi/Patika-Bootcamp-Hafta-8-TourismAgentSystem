@@ -188,5 +188,19 @@ public class ResInfo {
 
         return resInfos;
     }
+
+    // Rezervasyon silme metodu
+    // Reservation Deletion Method
+    public static boolean deleteRes(int id){
+        String query = "DELETE FROM reservation_info WHERE id=? ";
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setInt(1,id);
+            return pr.executeUpdate() != -1;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return true;
+    }
 }
 
