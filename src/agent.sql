@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 09 Kas 2023, 15:53:15
+-- Üretim Zamanı: 10 Kas 2023, 12:54:37
 -- Sunucu sürümü: 8.0.31
 -- PHP Sürümü: 7.4.33
 
@@ -48,7 +48,8 @@ INSERT INTO `hotel` (`id`, `name`, `star`, `property`, `address`, `phone`, `emai
 (15, 'Turan Otel', '****', 'Ücretsiz Otopark\nÜcretsiz WiFi\nHotel Concierge\nSPA\n7/24 Oda Servisi', 'Merkez, Camikebir Mahallesi 659. bulvarı, 81100 Düzce', '(0380) 514 27 81', 'info@turanotel.com'),
 (17, 'Erdi Otel', '****', 'SPA', 'Bahçelievler İstanbul', '034562345', 'erdi@gmail.com'),
 (18, 'New Gate Hotel', '****', 'Ücretsiz Otopark\nÜcretsiz WiFi', 'Eti, Gazi Mustafa Kemal Blv. No. 92, 06570 Çankaya / Ankara', '(530) 395 40 40', 'info@newgate.com'),
-(19, 'Maxx Royal Belek Golf Resort', '*****', 'Ücretsiz Otopark\nÜcretsiz WiFi\nYüzme Havuzu\nFitness Center\nHotel Concierge\nSPA\n7/24 Oda Servisi', 'Belek / Antalya', '444 55 66', 'info@maxxroyal.com');
+(19, 'Maxx Royal Belek Golf Resort', '*****', 'Ücretsiz Otopark\nÜcretsiz WiFi\nYüzme Havuzu\nFitness Center\nHotel Concierge\nSPA\n7/24 Oda Servisi', 'Belek / Antalya', '444 55 66', 'info@maxxroyal.com'),
+(20, 'Yozgat Çamlık Otel', '****', 'Ücretsiz Otopark \nÜcretsiz Wifi', 'Develik, Çamlık Cd. No:45 D:101, 66100 Merkez / Yozgat', '(0354) 217 53 00', 'info@camlikotel.com');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,8 @@ CREATE TABLE `reservation_info` (
 INSERT INTO `reservation_info` (`id`, `client_name`, `client_phone`, `client_email`, `client_note`, `room_id`, `check_in`, `check_out`, `adult_numb`, `child_numb`, `total_price`) VALUES
 (12, 'Erdi Salgın', '05469788023', 'erdisalgin@yandex.com', 'Oda temizleme istemiyor.', 15, '02/06/2024', '10/06/2024', 2, 1, 152000),
 (13, 'Nihat Salgın', '05425208579', 'nsalgin@hotmail.com', 'yok', 16, '06/03/2024', '10/03/2024', 2, 1, 32000),
-(14, 'Ekrem Taha Ünlü', '05078523452', 'ekremtahaunlu@gmail.com', 'oda temizleme hizmeti istemiyor.', 19, '02/06/2024', '12/06/2024', 1, 2, 50000);
+(14, 'Ekrem Taha Ünlü', '05078523452', 'ekremtahaunlu@gmail.com', 'oda temizleme hizmeti istemiyor.', 19, '02/06/2024', '12/06/2024', 1, 2, 50000),
+(21, 'Caner Soner Şeker', '05348654237', 'canersonerseker@gmail.com', 'oda temizleme istemiyor.', 30, '02/07/2024', '06/07/2024', 1, 1, 6800);
 
 -- --------------------------------------------------------
 
@@ -114,7 +116,8 @@ INSERT INTO `room` (`id`, `room_type`, `stock`, `season_id`, `adult_price`, `chi
 (26, 'Single', 40, 36, 1600, 1200, 41, 18),
 (27, 'Suit', 20, 26, 4000, 2000, 27, 13),
 (28, 'Suit', 20, 37, 17000, 12000, 42, 19),
-(29, 'Double', 49, 38, 25000, 17000, 43, 19);
+(29, 'Double', 49, 38, 25000, 17000, 43, 19),
+(30, 'Single', 29, 39, 1200, 500, 44, 20);
 
 -- --------------------------------------------------------
 
@@ -154,7 +157,8 @@ INSERT INTO `room_properties` (`id`, `property`, `room_id`, `bed`, `area`) VALUE
 (26, 'Televizyon \nMinibar ', 26, '2', 20),
 (27, 'Televizyon \nMinibar ', 27, '3', 45),
 (28, 'Televizyon \nMinibar \nOyun Konsolu\nKasa\nProjeksiyon', 28, '3', 30),
-(29, 'Televizyon \nMinibar \nOyun Konsolu\nKasa\nProjeksiyon', 29, '4', 70);
+(29, 'Televizyon \nMinibar \nOyun Konsolu\nKasa\nProjeksiyon', 29, '4', 70),
+(30, 'Televizyon ', 30, '2', 20);
 
 -- --------------------------------------------------------
 
@@ -199,7 +203,9 @@ INSERT INTO `season` (`id`, `season_start`, `season_end`, `hotel_id`) VALUES
 (35, '10/11/2023', '05/05/2024', 18),
 (36, '06/05/2024', '09/11/2024', 18),
 (37, '01/11/2023', '27/04/2024', 19),
-(38, '28/04/2024', '30/10/2024', 19);
+(38, '28/04/2024', '30/10/2024', 19),
+(39, '01/06/2024', '01/10/2024', 20),
+(40, '02/10/2024', '31/05/2025', 20);
 
 -- --------------------------------------------------------
 
@@ -236,7 +242,9 @@ INSERT INTO `type_hotel` (`id`, `type`, `hotel_id`) VALUES
 (40, 'Oda Kahvaltı', 18),
 (41, 'Tam Pansiyon', 18),
 (42, 'Ultra Herşey Dahil', 19),
-(43, 'Herşey Dahil', 19);
+(43, 'Herşey Dahil', 19),
+(44, 'Oda Kahvaltı', 20),
+(45, 'Tam Pansiyon', 20);
 
 -- --------------------------------------------------------
 
@@ -259,7 +267,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `uname`, `pass`, `type`) VALUES
 (1, 'patika', 'patika', '123', 'admin'),
 (2, 'Erdi Salgın', 'erdi', '123', 'employee'),
-(6, 'Ali Yılmaz', 'ali', '123', 'Employee');
+(6, 'Ali Yılmaz', 'ali', '123', 'Employee'),
+(7, 'Ekrem Taha Ünlü', 'ekrem', '123', 'Admin');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -315,43 +324,43 @@ ALTER TABLE `user`
 -- Tablo için AUTO_INCREMENT değeri `hotel`
 --
 ALTER TABLE `hotel`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `reservation_info`
 --
 ALTER TABLE `reservation_info`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `room`
 --
 ALTER TABLE `room`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `room_properties`
 --
 ALTER TABLE `room_properties`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `season`
 --
 ALTER TABLE `season`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `type_hotel`
 --
 ALTER TABLE `type_hotel`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

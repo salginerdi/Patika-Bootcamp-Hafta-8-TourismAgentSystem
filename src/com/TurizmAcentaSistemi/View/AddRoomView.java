@@ -8,7 +8,7 @@ import com.TurizmAcentaSistemi.Model.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class RoomAddGUI extends JFrame {
+public class AddRoomView extends JFrame {
     private JPanel wrapper;
     private JPanel pnl_room_add_left;
     private JPanel pnl_room_add_right;
@@ -35,7 +35,7 @@ public class RoomAddGUI extends JFrame {
 
     private final Employee employee;
 
-    public RoomAddGUI(Employee employee) {
+    public AddRoomView(Employee employee) {
         this.employee = employee;
         add(wrapper);
         setSize(800, 400);
@@ -86,7 +86,7 @@ public class RoomAddGUI extends JFrame {
                 int hotel_type_id = hotelTypeItem.getKey();
                 Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
                 int hotel_id = hotelItem.getKey();
-                for (HotelSeason obj : HotelSeason.getListByHotelID(hotel_id)) {
+                for (Season obj : Season.getListByHotelID(hotel_id)) {
                     String season = (obj.getSeason_start().toString() + "  -  " + obj.getSeason_end().toString());
                     if (season.equals(cmb_season.getSelectedItem().toString())) {
                         season_id = obj.getId();
@@ -163,7 +163,7 @@ public class RoomAddGUI extends JFrame {
         Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
         cmb_room_hotel_type.removeAllItems();
         cmb_room_hotel_type.addItem(new Item(0, null));
-        for (HotelType obj : HotelType.getListByHotelID(hotelItem.getKey())) {
+        for (com.TurizmAcentaSistemi.Model.Type obj : com.TurizmAcentaSistemi.Model.Type.getListByHotelID(hotelItem.getKey())) {
 
             cmb_room_hotel_type.addItem(new Item(obj.getId(), obj.getType()));
         }
@@ -173,7 +173,7 @@ public class RoomAddGUI extends JFrame {
         Item hotelItem = (Item) cmb_room_hotelname.getSelectedItem();
         cmb_season.removeAllItems();
         cmb_season.addItem(new Item(0, null));
-        for (HotelSeason obj : HotelSeason.getListByHotelID(hotelItem.getKey())) {
+        for (Season obj : Season.getListByHotelID(hotelItem.getKey())) {
             cmb_season.addItem(new Item(obj.getId(), (obj.getSeason_start() + "  -  " + obj.getSeason_end())));
         }
     }

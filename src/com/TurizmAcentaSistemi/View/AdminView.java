@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 
-public class AdminGUI extends JFrame {
+public class AdminView extends JFrame {
     private JPanel wrapper;
     private JTabbedPane tab_operator;
     private JTable tbl_user_list;
@@ -32,7 +32,7 @@ public class AdminGUI extends JFrame {
 
     private final Admin admin;
 
-    public AdminGUI(Admin admin){
+    public AdminView(Admin admin){
         this.admin = admin;
         add(wrapper);
         setSize(1200,600);
@@ -72,7 +72,7 @@ public class AdminGUI extends JFrame {
 
         btn_logout.addActionListener(e -> {
             dispose();
-            LoginGUI login = new LoginGUI();
+            LoginView login = new LoginView();
         });
 
         btn_user_add.addActionListener(e -> {

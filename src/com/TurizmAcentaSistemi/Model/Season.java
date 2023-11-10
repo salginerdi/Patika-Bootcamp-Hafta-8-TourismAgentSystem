@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class HotelSeason {
+public class Season {
 
     private int id;
     private String season_start;
@@ -16,7 +16,7 @@ public class HotelSeason {
 
     private Hotel hotel;
 
-    public HotelSeason(int id, String season_start, String season_end, int hotel_id) {
+    public Season(int id, String season_start, String season_end, int hotel_id) {
         this.id = id;
         this.season_start = season_start;
         this.season_end = season_end;
@@ -24,7 +24,7 @@ public class HotelSeason {
         this.hotel = Hotel.getFetch(hotel_id);
     }
 
-    public HotelSeason() {
+    public Season() {
     }
 
     public int getId() {
@@ -59,17 +59,17 @@ public class HotelSeason {
         this.hotel_id = hotel_id;
     }
 
-    // Belirli bir sezonun bilgilerini veritabanından alır ve ilgili HotelSeason nesnesi olarak döndürür.
+    // Belirli bir sezonun bilgilerini veritabanından alır ve ilgili Season nesnesi olarak döndürür.
     // This method retrieves the information of a specific season from the database based on its ID and returns the corresponding
-    public static HotelSeason getFetch(int id) {
-        HotelSeason obj = null;
+    public static Season getFetch(int id) {
+        Season obj = null;
         String query = "SELECT * FROM season WHERE id = ?";
         try {
             PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
             pr.setInt(1, id);
             ResultSet rs = pr.executeQuery();
             if (rs.next()){
-                obj = new HotelSeason(rs.getInt("id"), rs.getString("season_start"), rs.getString("season_end"), rs.getInt("hotel_id"));
+                obj = new Season(rs.getInt("id"), rs.getString("season_start"), rs.getString("season_end"), rs.getInt("hotel_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,27 +80,27 @@ public class HotelSeason {
 
     // Tüm sezonların listesini veritabanından alır ve bir ArrayList olarak döndürür.
     // This method retrieves a list of all seasons from the database and returns it as an ArrayList
-    public static ArrayList<HotelSeason> getListByHotelID( int id){
-        ArrayList<HotelSeason> hotelSeasonList = new ArrayList<>();
-        HotelSeason obj;
+    public static ArrayList<Season> getListByHotelID(int id){
+        ArrayList<Season> seasonList = new ArrayList<>();
+        Season obj;
         String query = "SELECT * FROM season WHERE hotel_id = ?";
         try {
             PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
             pr.setInt(1, id);
             ResultSet rs = pr.executeQuery();
             while (rs.next()){
-                obj = new HotelSeason();
+                obj = new Season();
                 obj.setId(rs.getInt("id"));
                 obj.setSeason_start(rs.getString("season_start"));
                 obj.setSeason_end(rs.getString("season_end"));
                 obj.setHotel_id(rs.getInt("hotel_id"));
-                hotelSeasonList.add(obj);
+                seasonList.add(obj);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return hotelSeasonList;
+        return seasonList;
     }
 
     // Yeni bir sezon ekler ve veritabanına kaydeder.

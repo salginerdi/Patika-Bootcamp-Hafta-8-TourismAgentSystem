@@ -4,8 +4,6 @@ import com.TurizmAcentaSistemi.Helper.Config;
 import com.TurizmAcentaSistemi.Helper.Helper;
 import com.TurizmAcentaSistemi.Model.*;
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 import java.text.ParseException;
 import java.util.Date;
 
-public class EmployeeGUI extends JFrame {
+public class EmployeeView extends JFrame {
     private JPanel wrapper;
     private JPanel pnl_top;
     private JButton btn_logout;
@@ -87,7 +85,7 @@ public class EmployeeGUI extends JFrame {
 
     private final Employee employee;
 
-    public EmployeeGUI(Employee employee){
+    public EmployeeView(Employee employee){
         this.employee = employee;
         add(wrapper);
         setSize(1200,600);
@@ -219,12 +217,12 @@ public class EmployeeGUI extends JFrame {
 
         btn_logout.addActionListener(e -> {
             dispose();
-            LoginGUI logGUI = new LoginGUI();
+            LoginView logGUI = new LoginView();
 
         });
 
         btn_hotel_add.addActionListener(e -> {
-            HotelAddGUI hotelAdd = new HotelAddGUI(employee);
+            AddHotelView hotelAdd = new AddHotelView(employee);
             hotelAdd.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -235,8 +233,8 @@ public class EmployeeGUI extends JFrame {
         });
 
         btn_room_add.addActionListener(e -> {
-            RoomAddGUI roomAddGUI = new RoomAddGUI(employee);
-            roomAddGUI.addWindowListener(new WindowAdapter() {
+            AddRoomView addRoomView = new AddRoomView(employee);
+            addRoomView.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
                     loadRoomListModel();
@@ -296,8 +294,8 @@ public class EmployeeGUI extends JFrame {
             }
             else {
                 for (Hotel obj : searchingHotel){
-                    ArrayList<HotelSeason> searchingSeason = HotelSeason.getListByHotelID(obj.getId());
-                    for (HotelSeason season : searchingSeason){
+                    ArrayList<Season> searchingSeason = Season.getListByHotelID(obj.getId());
+                    for (Season season : searchingSeason){
                         String season_start = season.getSeason_start();
                         String season_end = season.getSeason_end();
                         Date season_start_date = null;
@@ -340,7 +338,7 @@ public class EmployeeGUI extends JFrame {
                 check_in = fld_check_in.getText().trim();
                 check_out = fld_check_out.getText().trim();
 
-                ReservationGUI resGUI = new ReservationGUI(room, adult_numb, child_numb, check_in, check_out);
+                ReservationView resGUI = new ReservationView(room, adult_numb, child_numb, check_in, check_out);
                 resGUI.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosed(WindowEvent e) {
@@ -462,7 +460,7 @@ public class EmployeeGUI extends JFrame {
         DefaultTableModel clearModel = (DefaultTableModel) tbl_hotel_type.getModel();
         clearModel.setRowCount(0);
         int i;
-        for (HotelType obj : HotelType.getListByHotelID(id)){
+        for (com.TurizmAcentaSistemi.Model.Type obj : com.TurizmAcentaSistemi.Model.Type.getListByHotelID(id)){
             i = 0;
             row_hotel_type[i++] = obj.getType();
             mdl_hotel_type.addRow(row_hotel_type);
@@ -473,7 +471,7 @@ public class EmployeeGUI extends JFrame {
         DefaultTableModel clearModel = (DefaultTableModel) tbl_hotel_season.getModel();
         clearModel.setRowCount(0);
         int i;
-        for (HotelSeason obj : HotelSeason.getListByHotelID(id)){
+        for (Season obj : Season.getListByHotelID(id)){
             i = 0;
             row_hotel_season[i++] = obj.getSeason_start();
             row_hotel_season[i++] = obj.getSeason_end();
@@ -492,10 +490,10 @@ public class EmployeeGUI extends JFrame {
             row_room_list[i++] = Hotel.getFetch(obj.getHotel_id()).getName();
             row_room_list[i++] = obj.getRoom_type();
             row_room_list[i++] = obj.getStock();
-            row_room_list[i++] = HotelSeason.getFetch(obj.getSeason_id()).getSeason_start() + " - " + HotelSeason.getFetch(obj.getSeason_id()).getSeason_end();
+            row_room_list[i++] = Season.getFetch(obj.getSeason_id()).getSeason_start() + " - " + Season.getFetch(obj.getSeason_id()).getSeason_end();
             row_room_list[i++] = obj.getAdult_price();
             row_room_list[i++] = obj.getChild_price();
-            row_room_list[i++] = HotelType.getFetch(obj.getHotel_type_id()).getType();
+            row_room_list[i++] = com.TurizmAcentaSistemi.Model.Type.getFetch(obj.getHotel_type_id()).getType();
             mdl_room_list.addRow(row_room_list);
         }
     }
@@ -514,10 +512,10 @@ public class EmployeeGUI extends JFrame {
                 row_room_list[i++] = Hotel.getFetch(obj.getHotel_id()).getName();
                 row_room_list[i++] = obj.getRoom_type();
                 row_room_list[i++] = obj.getStock();
-                row_room_list[i++] = HotelSeason.getFetch(obj.getSeason_id()).getSeason_start() + " - " + HotelSeason.getFetch(obj.getSeason_id()).getSeason_end();
+                row_room_list[i++] = Season.getFetch(obj.getSeason_id()).getSeason_start() + " - " + Season.getFetch(obj.getSeason_id()).getSeason_end();
                 row_room_list[i++] = obj.getAdult_price();
                 row_room_list[i++] = obj.getChild_price();
-                row_room_list[i++] = HotelType.getFetch(obj.getHotel_type_id()).getType();
+                row_room_list[i++] = com.TurizmAcentaSistemi.Model.Type.getFetch(obj.getHotel_type_id()).getType();
                 mdl_room_list.addRow(row_room_list);
             }
         }

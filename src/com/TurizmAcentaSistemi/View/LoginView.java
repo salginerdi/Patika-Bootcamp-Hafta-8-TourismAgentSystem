@@ -8,14 +8,14 @@ import com.TurizmAcentaSistemi.Model.User;
 
 import javax.swing.*;
 
-public class LoginGUI extends JFrame {
+public class LoginView extends JFrame {
     private JPanel wrapper;
     private JTextField fld_user_uname;
     private JTextField fld_user_pass;
     private JButton btn_login;
     private JLabel pnl_logo;
 
-    public LoginGUI(){
+    public LoginView(){
         add(wrapper);
         setSize(400,500);
         setLocation(Helper.screenCenterPoint("x", getSize()), Helper.screenCenterPoint("y", getSize()));
@@ -41,10 +41,10 @@ public class LoginGUI extends JFrame {
                 else{
                     switch (u.getType()){
                         case "admin":
-                            AdminGUI adminGUI = new AdminGUI((Admin) u);
+                            AdminView adminView = new AdminView((Admin) u);
                             break;
                         case "employee":
-                            EmployeeGUI employeeGUIGUI = new EmployeeGUI((Employee) u);
+                            EmployeeView employeeView = new EmployeeView((Employee) u);
                             break;
                     }
                     dispose();
@@ -55,6 +55,6 @@ public class LoginGUI extends JFrame {
 
     public static void main(String[] args){
         Helper.setLayout();
-        LoginGUI login = new LoginGUI();
+        LoginView login = new LoginView();
     }
 }

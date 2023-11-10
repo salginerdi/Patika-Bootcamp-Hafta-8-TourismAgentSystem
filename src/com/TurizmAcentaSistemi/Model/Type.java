@@ -6,21 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class HotelType {
+public class Type {
     private int id;
     private String type;
     private int hotel_id;
 
     private Hotel hotel;
 
-    public HotelType(int id, String type, int hotel_id) {
+    public Type(int id, String type, int hotel_id) {
         this.id = id;
         this.type = type;
         this.hotel_id = hotel_id;
         this.hotel = Hotel.getFetch(hotel_id);
     }
 
-    public HotelType() {
+    public Type() {
 
     }
 
@@ -48,17 +48,17 @@ public class HotelType {
         this.hotel_id = hotel_id;
     }
 
-    // Belirli bir otel tipinin (konaklama tipinin) bilgilerini veritabanından alır ve ilgili HotelType nesnesi olarak döndürür.
-    // This method retrieves the information of a specific hotel type from the database based on its ID and returns the corresponding HotelType object.
-    public static HotelType getFetch(int id) {
-        HotelType obj = null;
+    // Belirli bir otel tipinin (konaklama tipinin) bilgilerini veritabanından alır ve ilgili Type nesnesi olarak döndürür.
+    // This method retrieves the information of a specific hotel type from the database based on its ID and returns the corresponding Type object.
+    public static Type getFetch(int id) {
+        Type obj = null;
         String query = "SELECT * FROM type_hotel WHERE id = ?";
         try {
             PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
             pr.setInt(1, id);
             ResultSet rs = pr.executeQuery();
             if (rs.next()){
-                obj = new HotelType(rs.getInt("id"), rs.getString("type"), rs.getInt("hotel_id"));
+                obj = new Type(rs.getInt("id"), rs.getString("type"), rs.getInt("hotel_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,25 +85,25 @@ public class HotelType {
 
     // Belirli bir otelin sahip olduğu otel tiplerinin (konaklama tiplerinin) listesini veritabanından alır ve bir ArrayList olarak döndürür.
     // This method retrieves a list of hotel types (accommodation types) that belong to a specific hotel from the database and returns it as an ArrayList.
-    public static ArrayList<HotelType> getListByHotelID( int id){
-        ArrayList<HotelType> hotelTypeList = new ArrayList<>();
-        HotelType obj;
+    public static ArrayList<Type> getListByHotelID(int id){
+        ArrayList<Type> typeList = new ArrayList<>();
+        Type obj;
         String query = "SELECT * FROM type_hotel WHERE hotel_id = ?";
         try {
             PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
             pr.setInt(1, id);
             ResultSet rs = pr.executeQuery();
             while (rs.next()){
-                obj = new HotelType();
+                obj = new Type();
                 obj.setId(rs.getInt("id"));
                 obj.setType(rs.getString("type"));
                 obj.setHotel_id(rs.getInt("hotel_id"));
-                hotelTypeList.add(obj);
+                typeList.add(obj);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return hotelTypeList;
+        return typeList;
     }
 }

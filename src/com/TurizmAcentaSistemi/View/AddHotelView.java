@@ -4,12 +4,11 @@ import com.TurizmAcentaSistemi.Helper.Config;
 import com.TurizmAcentaSistemi.Helper.Helper;
 import com.TurizmAcentaSistemi.Model.Employee;
 import com.TurizmAcentaSistemi.Model.Hotel;
-import com.TurizmAcentaSistemi.Model.HotelSeason;
-import com.TurizmAcentaSistemi.Model.HotelType;
+import com.TurizmAcentaSistemi.Model.Season;
 
 import javax.swing.*;
 
-public class HotelAddGUI extends JFrame {
+public class AddHotelView extends JFrame {
     private JPanel wrapper;
     private JPanel pnl_hotel_add_top;
     private JPanel pnl_hotel_add_left;
@@ -38,7 +37,7 @@ public class HotelAddGUI extends JFrame {
 
     private final Employee employee;
 
-    public HotelAddGUI(Employee employee){
+    public AddHotelView(Employee employee){
         this.employee = employee;
         add(wrapper);
         setSize(800,500);
@@ -88,46 +87,46 @@ public class HotelAddGUI extends JFrame {
                         switch (i){
                             case 1:
                                 if (radioButton1.isSelected()){
-                                    HotelType.add(radioButton1.getText(), added_hotel_id);
+                                    com.TurizmAcentaSistemi.Model.Type.add(radioButton1.getText(), added_hotel_id);
                                 }
                                 break;
                             case 2:
                                 if (radioButton2.isSelected()){
-                                    HotelType.add(radioButton2.getText(), added_hotel_id);
+                                    com.TurizmAcentaSistemi.Model.Type.add(radioButton2.getText(), added_hotel_id);
                                 }
                                 break;
                             case 3:
                                 if (radioButton3.isSelected()){
-                                    HotelType.add(radioButton3.getText(), added_hotel_id);
+                                    com.TurizmAcentaSistemi.Model.Type.add(radioButton3.getText(), added_hotel_id);
                                 }
                                 break;
                             case 4:
                                 if (radioButton4.isSelected()){
-                                    HotelType.add(radioButton4.getText(), added_hotel_id);
+                                    com.TurizmAcentaSistemi.Model.Type.add(radioButton4.getText(), added_hotel_id);
                                 }
                                 break;
                             case 5:
                                 if (radioButton5.isSelected()){
-                                    HotelType.add(radioButton5.getText(), added_hotel_id);
+                                    com.TurizmAcentaSistemi.Model.Type.add(radioButton5.getText(), added_hotel_id);
                                 }
                                 break;
                             case 6:
                                 if (radioButton6.isSelected()){
-                                    HotelType.add(radioButton6.getText(), added_hotel_id);
+                                    com.TurizmAcentaSistemi.Model.Type.add(radioButton6.getText(), added_hotel_id);
                                 }
                                 break;
                             case 7:
                                 if (radioButton7.isSelected()){
-                                    HotelType.add(radioButton7.getText(), added_hotel_id);
+                                    com.TurizmAcentaSistemi.Model.Type.add(radioButton7.getText(), added_hotel_id);
                                 }
                                 break;
                         }
                     }
                     // 10 - Otellerin fiyatlandırılmasında dönem yönetimi eklenmesi
-                    HotelSeason.add(season_start1, season_end1, added_hotel_id);
+                    Season.add(season_start1, season_end1, added_hotel_id);
 
                     if (!Helper.isFieldEmpty(fld_hotel_season_start2) && !Helper.isFieldEmpty(fld_hotel_season_end2)){
-                        HotelSeason.add(season_start2,season_end2,added_hotel_id);
+                        Season.add(season_start2,season_end2,added_hotel_id);
                     }
 
                     Helper.showMsg("done");

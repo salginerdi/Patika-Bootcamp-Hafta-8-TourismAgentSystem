@@ -21,8 +21,8 @@ public class Room {
 
 
     private Hotel hotel;
-    private HotelSeason hotelSeason;
-    private HotelType hotelType;
+    private Season season;
+    private Type type;
 
     public Room() {
 
@@ -38,8 +38,8 @@ public class Room {
         this.hotel_type_id = hotel_type_id;
         this.hotel_id = hotel_id;
         this.hotel = Hotel.getFetch(hotel_id);
-        this.hotelSeason = HotelSeason.getFetch(season_id);
-        this.hotelType = HotelType.getFetch(hotel_type_id);
+        this.season = Season.getFetch(season_id);
+        this.type = Type.getFetch(hotel_type_id);
     }
 
     public int getId() {
@@ -115,20 +115,20 @@ public class Room {
         this.hotel = hotel;
     }
 
-    public HotelSeason getHotelSeason() {
-        return hotelSeason;
+    public Season getHotelSeason() {
+        return season;
     }
 
-    public void setHotelSeason(HotelSeason hotelSeason) {
-        this.hotelSeason = hotelSeason;
+    public void setHotelSeason(Season season) {
+        this.season = season;
     }
 
-    public HotelType getHotelType() {
-        return hotelType;
+    public Type getHotelType() {
+        return type;
     }
 
-    public void setHotelType(HotelType hotelType) {
-        this.hotelType = hotelType;
+    public void setHotelType(Type type) {
+        this.type = type;
     }
 
     public static ArrayList<Room> getList(){

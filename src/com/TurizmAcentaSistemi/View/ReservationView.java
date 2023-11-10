@@ -15,7 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ReservationGUI extends JFrame {
+public class ReservationView extends JFrame {
     private JPanel wrapper;
     private JTextField fld_hotel_name;
     private JTextArea txtArea_hotel_address;
@@ -43,7 +43,7 @@ public class ReservationGUI extends JFrame {
     private int total_price;
     private int total_price2;
 
-    public ReservationGUI(Room room, int adult_numb, int child_numb, String check_in, String check_out){
+    public ReservationView(Room room, int adult_numb, int child_numb, String check_in, String check_out){
         this.room = room;
         this.adult_numb = adult_numb;
         this.child_numb = child_numb;
