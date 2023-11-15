@@ -267,8 +267,6 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `uname`, `pass`, `type`) VALUES
 (1, 'patika', 'patika', '123', 'admin'),
 (2, 'Erdi Salgın', 'erdi', '123', 'employee'),
-(6, 'Ali Yılmaz', 'ali', '123', 'Employee'),
-(7, 'Ekrem Taha Ünlü', 'ekrem', '123', 'Admin');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
