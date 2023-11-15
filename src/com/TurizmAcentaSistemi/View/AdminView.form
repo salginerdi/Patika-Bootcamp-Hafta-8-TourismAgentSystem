@@ -219,8 +219,8 @@
                     <properties>
                       <model>
                         <item value=""/>
-                        <item value="Admin"/>
-                        <item value="Employee"/>
+                        <item value="admin"/>
+                        <item value="employee"/>
                       </model>
                     </properties>
                   </component>
