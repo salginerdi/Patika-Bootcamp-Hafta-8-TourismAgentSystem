@@ -47,4 +47,3 @@ Prices are automatically calculated based on guest information, the number of ni
 ### Technical Requirements
 A database must be used.
 A GUI (User Interface) should be designed. Tools like Java Swing or JavaFX can be used.
-
